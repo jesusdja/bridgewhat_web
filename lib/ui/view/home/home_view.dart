@@ -138,9 +138,12 @@ class _HomePageState extends State<HomeView> {
   }
 
   Widget iconApp(){
+
+    double size = MediaQuery.of(context).size.width;
+
     return Container(
       height: 100,
-      width: 200,
+      width: size > 400 ? 200 : (size <= 250 ? 50 : size - 200),
       decoration: BoxDecoration(
         image: DecorationImage(
             image: Image.asset('assets/image/logo_colores_fondo_transparente.png').image,

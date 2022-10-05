@@ -18,18 +18,22 @@ class VideosProvider extends ChangeNotifier {
 
     listVideos = [];
 
-    int videoCant = 6;
-    for (int x = 1; x < videoCant; x++){
+    for (int x = 1; x < 6; x++){
       Map<String, dynamic> post = {
         'id': x,
         'title': titlesVideos[x],
         'description' : descriptionVideos[x],
-        'url' : 'assets/videos/stage_$x.mp4'
+        'url' : ''
       };
       listVideos.add(post);
       openDescription[x] = false;
     }
 
+    listVideos[0]['url'] = 'https://bridgewhat.ole.agency/videos/02%20Stage%201%20Attraction.mp4';
+    listVideos[1]['url'] = 'https://bridgewhat.ole.agency/videos/07%20Stage%202%20Acquisition.mp4';
+    listVideos[2]['url'] = 'https://bridgewhat.ole.agency/videos/12%20%20Stage%203%20ARPU.mp4';
+    listVideos[3]['url'] = 'https://bridgewhat.ole.agency/videos/17%20Stage%204%20Retention.mp4';
+    listVideos[4]['url'] = 'https://bridgewhat.ole.agency/videos/22%20Stage%205%20Referrals.mp4';
 
     notifyListeners();
   }

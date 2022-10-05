@@ -5,7 +5,6 @@ import 'package:bridgewhat_web/providers/videos_provider.dart';
 import 'package:bridgewhat_web/ui/view/menu/videos/widgets/tabbar_widget.dart';
 import 'package:bridgewhat_web/widgets_utils/circular_progress_colors.dart';
 import 'package:bridgewhat_web/widgets_utils/widgets_shared.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,14 +25,8 @@ class _VideosViewState extends State<VideosView> {
   @override
   void initState() {
     super.initState();
-    //initialData();
-  }
-
-  initialData(){
-    Future.delayed(const Duration(milliseconds: 100)).then((value){
-      videosProvider.viewContainerLikePost(idPost: 0);
-      videosProvider.viewContainerSharedPost(idPost: 0);
-    });
+    Future.delayed(const Duration(milliseconds: 500)).then((value) =>
+        videosProvider.getVideos());
   }
 
   @override
@@ -190,13 +183,10 @@ class _CardPostContainerState extends State<CardPostContainer> {
   void initState() {
     super.initState();
     video = widget.videos;
-    _controller = VideoPlayerController.asset(video['url'])
+    _controller = VideoPlayerController.network(video['url'])
       ..initialize().then((_) {
         setState(() {});
       });
-
-    Future.delayed(const Duration(milliseconds: 500)).then((value) =>
-        videosProvider.getVideos());
   }
 
   @override
@@ -215,20 +205,25 @@ class _CardPostContainerState extends State<CardPostContainer> {
       child: Column(
         children: [
           cardVideo(),
+
           SizedBox(
             width: sizeW,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: (){
-                  setState(() {
-                    _controller.value.isPlaying
-                        ? _controller.pause()
-                        : _controller.play();
-                  });
-                }, icon: Icon(_controller.value.isPlaying ? Icons.pause_circle_outline : Icons.play_circle_outline),
-                color: AcademyColors.primary,iconSize: 30),
+                if(!_controller.value.isInitialized)...[
+                  circularProgressColors(),
+                ]else...[
+                  IconButton(onPressed: (){
+                    setState(() {
+                      _controller.value.isPlaying
+                          ? _controller.pause()
+                          : _controller.play();
+                    });
+                  }, icon: Icon(_controller.value.isPlaying ? Icons.pause_circle_outline : Icons.play_circle_outline),
+                      color: AcademyColors.primary,iconSize: 30),
+                ],
               ],
             ),
           ),
@@ -401,7 +396,7 @@ class _CardPostContainerState extends State<CardPostContainer> {
           ),
         ),
         onTap: () async {
-          String _url = videosProvider.mapSubVideos[video['id']]![type]!;
+          String _url = 'https://bridgewhat.ole.agency/videos/LOG_$type.mp4';
           if (!await launchUrl(Uri.parse(_url))) {
           throw 'Could not launch $_url';
           }
