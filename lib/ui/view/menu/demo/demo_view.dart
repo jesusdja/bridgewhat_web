@@ -34,7 +34,16 @@ class _DemoViewState extends State<DemoView> {
                 child: SizedBox(
                   width: sizeW,
                   child: Column(
-                    children: const [
+                    children: [
+                      SizedBox(height: sizeH * 0.02),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: sizeW * 0.105),
+                        width: sizeW,
+                        child: Text('To see what are the benefits you can get from each of the packages, please click in Crystal, Silver, Gold and Platinum.',
+                            textAlign: TextAlign.left,style: AcademyStyles().stylePoppins(
+                                size: sizeH * 0.015
+                            )),
+                      ),
                       CardDemo(type: 0),
                       CardDemo(type: 1),
                       CardDemo(type: 2),
