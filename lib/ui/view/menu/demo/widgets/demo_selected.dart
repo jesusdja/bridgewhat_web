@@ -38,40 +38,43 @@ class _DemoSelectedState extends State<DemoSelected> {
         onTap: (){},
         child: Scaffold(
           backgroundColor: Colors.white,
-          body: Column(
-            children: [
-              SizedBox(height: sizeH * 0.01,),
-              headerContainer(),
-              SizedBox(height: sizeH * 0.02,),
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: SizedBox(
-                    width: sizeW,
-                    child: Column(
-                      children: [
-                        Container(
-                          width: sizeW,
-                          margin: EdgeInsets.symmetric(horizontal: sizeW * 0.06),
-                          child: bannerTitle(type: 3),
-                        ),
-                        // titleCard(),
-                        //title2Card(),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: sizeW * 0.05),
-                          child: CardDemo(type: widget.type,isButtonInfo: false),
-                        ),
-                        // descriptionCard(),
-                        // cardPostImg(),
-                        selectedAccessPublish(),
-                        contentsCardSelected(),
-                        // buttonBottom(),
-                      ],
+          body: SizedBox(
+            width: 500,
+            child: Column(
+              children: [
+                SizedBox(height: sizeH * 0.01,),
+                headerContainer(),
+                SizedBox(height: sizeH * 0.02,),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: SizedBox(
+                      width: sizeW,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: sizeW,
+                            margin: EdgeInsets.symmetric(horizontal: sizeW * 0.06),
+                            child: bannerTitle(type: 3),
+                          ),
+                          // titleCard(),
+                          //title2Card(),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: sizeW * 0.05),
+                            child: CardDemo(type: widget.type,isButtonInfo: false),
+                          ),
+                          // descriptionCard(),
+                          // cardPostImg(),
+                          selectedAccessPublish(),
+                          contentsCardSelected(),
+                          // buttonBottom(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -184,7 +184,7 @@ class _CardDemoState extends State<CardDemo> {
         }
       },
       child: Container(
-        width: sizeW * 0.5,
+        width: 600,
         margin: EdgeInsets.only(top: sizeH * 0.02),
         padding: EdgeInsets.symmetric(vertical: sizeH * 0.015),
         decoration: const BoxDecoration(
@@ -202,11 +202,14 @@ class _CardDemoState extends State<CardDemo> {
                 color: color,
               ),
               child: Center(
-                child: Text(title,style: AcademyStyles().stylePoppins(
-                    size: sizeH * 0.02,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
-                )),
+                child: FittedBox(
+                  fit:BoxFit.contain,
+                  child: Text(title,style: AcademyStyles().stylePoppins(
+                      size: sizeH * 0.02,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                  )),
+                ),
               ),
             ),
             Expanded(

@@ -75,7 +75,9 @@ class _DemoPageMoreInfoState extends State<DemoPageMoreInfo> {
                   ),
                 ),
                 SizedBox(height: sizeH * 0.02),
-                listContainer(),
+                Expanded(
+                  child: listContainer(),
+                ),
               ],
             ),
           ),
