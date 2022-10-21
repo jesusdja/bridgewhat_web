@@ -4,6 +4,7 @@ import 'package:bridgewhat_web/ui/view/home/send_email_view.dart';
 import 'package:bridgewhat_web/ui/view/menu/demo/widgets/demo_selected.dart';
 import 'package:bridgewhat_web/ui/view/menu/levers/levers_page.dart';
 import 'package:bridgewhat_web/ui/view/menu/post/post_view.dart';
+import 'package:bridgewhat_web/ui/view/menu/quiz/quiz_view.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +41,11 @@ class DashboardHandlers {
       }
   );
 
+  static Handler quiz = Handler(
+      handlerFunc: ( context, params ) {
+        return const QuizView();
+      }
+  );
 
 }
 

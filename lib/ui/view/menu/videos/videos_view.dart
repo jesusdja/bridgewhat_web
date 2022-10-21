@@ -2,6 +2,8 @@ import 'package:bridgewhat_web/config/academy_colors.dart';
 import 'package:bridgewhat_web/config/academy_style.dart';
 import 'package:bridgewhat_web/main.dart';
 import 'package:bridgewhat_web/providers/videos_provider.dart';
+import 'package:bridgewhat_web/router/router.dart';
+import 'package:bridgewhat_web/services/navigation_service.dart';
 import 'package:bridgewhat_web/ui/view/menu/videos/widgets/tabbar_widget.dart';
 import 'package:bridgewhat_web/widgets_utils/circular_progress_colors.dart';
 import 'package:bridgewhat_web/widgets_utils/widgets_shared.dart';
@@ -73,6 +75,7 @@ class _VideosViewState extends State<VideosView> {
               InkWell(
                 onTap: (){
                   //Navigator.push(context,MaterialPageRoute<void>( builder: (context) => const QuizPage()),);
+                  NavigationService.replaceTo(Flurorouter.quiz);
                 },
                 child: Container(
                   width: sizeW,

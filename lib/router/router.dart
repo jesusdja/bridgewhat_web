@@ -18,6 +18,7 @@ class Flurorouter {
   static String cartoons    = '/cartoons';
   static String demoDetails    = '/demo/:id';
   static String sendEmail = '/sendEmail';
+  static String quiz = '/quiz';
 
   // Auth Router
   static String loginRoute    = '/auth/login';
@@ -36,6 +37,7 @@ class Flurorouter {
     router.define( levers, handler: DashboardHandlers.levers, transitionType: TransitionType.fadeIn );
     router.define( demoDetails, handler: DashboardHandlers.demoDetails, transitionType: TransitionType.fadeIn );
     router.define( sendEmail, handler: DashboardHandlers.sendEmail, transitionType: TransitionType.fadeIn );
+    router.define( quiz, handler: DashboardHandlers.quiz, transitionType: TransitionType.fadeIn );
 
     // Login Routes
     router.define( loginRoute, handler: LoginHandlers.login, transitionType: TransitionType.none );
