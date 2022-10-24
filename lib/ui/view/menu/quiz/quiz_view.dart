@@ -36,7 +36,7 @@ class _QuizViewState extends State<QuizView> {
   }
 
   Future initialData() async{
-    Future.delayed(const Duration(milliseconds: 100))
+    Future.delayed(const Duration(milliseconds: 500))
         .then((value) => quizProvider.loadDataQuiz());
   }
 
@@ -44,8 +44,12 @@ class _QuizViewState extends State<QuizView> {
   Widget build(BuildContext context) {
     quizProvider = Provider.of<QuizProvider>(context);
 
-    bool isFinish = quizProvider.posQuestion == (quizProvider.listQuestion.length - 1);
-    TypeQuestion typeQuestion = quizProvider.listQuestion[quizProvider.posQuestion]['type'];
+    bool isFinish = false;
+    TypeQuestion typeQuestion = TypeQuestion.simple;
+    if(quizProvider.listQuestion.isNotEmpty){
+      isFinish = quizProvider.posQuestion == (quizProvider.listQuestion.length - 1);
+      typeQuestion = quizProvider.listQuestion[quizProvider.posQuestion]['type'];
+    }
 
 
     return SafeArea(

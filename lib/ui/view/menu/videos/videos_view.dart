@@ -72,28 +72,28 @@ class _VideosViewState extends State<VideosView> {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: (){
-                  //Navigator.push(context,MaterialPageRoute<void>( builder: (context) => const QuizPage()),);
-                  NavigationService.replaceTo(Flurorouter.quiz);
-                },
-                child: Container(
-                  width: sizeW,
-                  height: sizeH * 0.06,
-                  color: AcademyColors.primary,
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Center(
-                          child: RichText(
-                            text: TextSpan(
-                              text: 'Please take ',
-                              style: AcademyStyles().stylePoppins(size: 12,color: Colors.white ),
-                              children: [
-                                WidgetSpan(
+              Container(
+                width: sizeW,
+                height: sizeH * 0.06,
+                color: AcademyColors.primary,
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Please take ',
+                            style: AcademyStyles().stylePoppins(size: 12,color: Colors.white ),
+                            children: [
+                              WidgetSpan(
+                                child: InkWell(
+                                  onTap: (){
+                                    //Navigator.push(context,MaterialPageRoute<void>( builder: (context) => const QuizPage()),);
+                                    NavigationService.replaceTo(Flurorouter.quiz);
+                                  },
                                   child: Container(
                                     width: sizeW * 0.12,
                                     decoration: BoxDecoration(
@@ -111,11 +111,16 @@ class _VideosViewState extends State<VideosView> {
                                     ),
                                   ),
                                 ),
-                                TextSpan(
-                                  text: ' know more about the ',
-                                  style: AcademyStyles().stylePoppins(size: 12,color: Colors.white),
-                                ),
-                                WidgetSpan(
+                              ),
+                              TextSpan(
+                                text: ' know more about the ',
+                                style: AcademyStyles().stylePoppins(size: 12,color: Colors.white),
+                              ),
+                              WidgetSpan(
+                                child: InkWell(
+                                  onTap: (){
+                                    NavigationService.replaceTo(Flurorouter.levers);
+                                  },
                                   child: Container(
                                     width: sizeW * 0.15,
                                     decoration: BoxDecoration(
@@ -133,13 +138,13 @@ class _VideosViewState extends State<VideosView> {
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               const Tabbar(),
